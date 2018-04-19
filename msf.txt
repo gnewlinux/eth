@@ -1,0 +1,23 @@
+# atualizar exploits
+msfupdate
+
+# atualizar framework
+apt install metasploit
+
+# para importar resultados de nmap em xml
+# ex: nmap -A -oX resultados.xml 192.168.1.15-17
+db_import /root/resultados.xml
+hosts # mostras hosts importados
+services # mostra serviços do banco
+
+# vai jogar no hosts, services, etc...
+db_nmap # nmap no msf, ex: db_nmap -A 192.168.1.1
+
+# Pesquisando e Selecionando Exploits
+search -h # para help
+
+# no ano de 2015, exploits e clientes.
+search cve:2015 type:exploit app:client
+
+search Internet Explorer
+
